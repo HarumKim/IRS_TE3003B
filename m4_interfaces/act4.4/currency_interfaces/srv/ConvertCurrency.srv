@@ -1,0 +1,11 @@
+# ROS 2 utiliza archivos .srv en lugar de .proto
+
+# Petición - Equivalente a ConversionRequest en gRPC
+float64 amount
+string from_currency
+string to_currency
+---
+# Respuesta - Equivalente a ConversionResponse en gRPC
+float64 converted_amount
+string target_currency
+float64 exchange_rate
