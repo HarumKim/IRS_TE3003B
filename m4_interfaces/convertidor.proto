@@ -1,0 +1,25 @@
+syntax = "proto3";      // Version de Protocol Buffers
+
+package convertidor;
+
+// Metodos que el cliente puede llamar en un servidor
+service Convertidor {
+  rpc ConvertirADolar (ConversionRequest) returns (ConversionResponse);
+  rpc ConvertirAYen (ConversionRequest) returns (ConversionResponse);
+}
+
+// Mensaje que el cliente enviara al servidor (peticion)
+message ConversionRequest {
+  double monto_mxn = 1;
+}
+
+// Mensaje de respuesta que el servidor enviara al cliente
+message ConversionResponse {
+  double monto_convertido = 1;
+  string moneda_destino = 2;
+  double tipo_cambio = 3;
+}
+
+
+// Comando para compilar
+// python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. convertidor.proto
